@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Open for business v1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2014-02-21 14:04:55+0000\n"
+"PO-Revision-Date: 2014-02-21 14:55:36+0000\n"
 "Last-Translator: slimndap <jeroen@slimndap.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -20,64 +20,69 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Textdomain-Support: yes"
 
-#: are-you-open.php:136
+#: open_for_business.php:138
 #@ open_for_business
 msgid "Opening hours"
 msgstr "Openingstijden"
 
-#: are-you-open.php:143
+#: open_for_business.php:145
 #@ open_for_business
 msgid "Regular hours"
 msgstr "Reguliere openingstijden"
 
-#: are-you-open.php:163
-#: are-you-open.php:169
+#: open_for_business.php:165
+#: open_for_business.php:171
 #@ open_for_business
 msgid "Open for business"
 msgstr "Open for business"
 
-#: are-you-open.php:169
+#: open_for_business.php:171
 #@ default
 msgid "Settings"
 msgstr ""
 
-#: are-you-open.php:194
+#: open_for_business.php:196
 #@ open_for_business
 msgid "from"
 msgstr "vanaf"
 
-#: are-you-open.php:218
+#: open_for_business.php:220
 #@ open_for_business
 msgid "to"
 msgstr "tot"
 
-#: are-you-open.php:80
+#: open_for_business.php:82
 #, php-format
 #@ open_for_business
 msgid "open today until %s"
 msgstr "vandaag open tot %s"
 
-#: are-you-open.php:86
+#: open_for_business.php:88
 #, php-format
 #@ open_for_business
 msgid "open today from %s"
 msgstr "vandaag open vanaf %s"
 
-#: are-you-open.php:103
+#: open_for_business.php:105
 #, php-format
 #@ open_for_business
 msgid "open tomorrow from %s"
 msgstr "morgen open vanaf %s"
 
-#: are-you-open.php:110
+#: open_for_business.php:112
+#: open_for_business.php:121
 #, php-format
 #@ open_for_business
 msgid "open %s from %s"
 msgstr "%s open vanaf %s"
 
-#: are-you-open.php:119
-#, php-format
+#: open_for_business.php:272
 #@ open_for_business
-msgid "open  %s from %s"
-msgstr ""
+msgid "open"
+msgstr "open"
+
+#: open_for_business.php:274
+#@ open_for_business
+msgid "closed"
+msgstr "gesloten"
 
