@@ -16,10 +16,17 @@ class Open_for_business {
 		}
 
 		add_action( 'plugins_loaded', array($this,'plugins_loaded'));
+		add_action( 'admin_notices', array($this,'admin_notice'));
 		
 		add_shortcode('open_for_business', array($this,'shortcode'));
 		
 		$this->options = get_option('open_for_business');
+	}
+	
+	function admin_notice() {
+		if (is_admin() && !$this->ready()) {
+			echo '<div class="update-nag"><p>'.sprintf(__('Please complete your business hours in the <a href="%s">settings</a>.','open_for_business'),'options-general.php?page=open_for_business-admin').'</p></div>';
+		}
 	}
 	
 	function now() {
@@ -75,6 +82,9 @@ class Open_for_business {
 	}
 
 	function please_elaborate() {
+		if (!$this->ready()) {
+			return false;
+		}
 		if ($this->well_are_you()) {
 			// We're open. But when do you close?
 			$weekday = date('w',$this->now());
@@ -125,6 +135,20 @@ class Open_for_business {
 			}
 		}
 		
+	}
+
+	function ready() {
+		for ($i=0;$i<6;$i++) {
+			if (
+				!empty($this->options['open_hour_'.$i]) &&
+				!empty($this->options['open_minute_'.$i]) &&
+				!empty($this->options['close_hour_'.$i]) &&
+				!empty($this->options['close_hour_'.$i])
+			) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	function admin_init() {
@@ -263,19 +287,21 @@ class Open_for_business {
 	}
 	
 	function shortcode($atts,$content) {
-		extract( shortcode_atts( array(
-			'elaborate' => false
-		), $atts ) );
-		
-		
-		if ($this->well_are_you()) {
-			echo __('open','open_for_business');
-		} else {
-			echo __('closed','open_for_business');
-		}
-		
-		if ($elaborate) {
-			echo ' ('.$this->please_elaborate().')';
+		if ($this->ready()) {
+			extract( shortcode_atts( array(
+				'elaborate' => false
+			), $atts ) );
+			
+			
+			if ($this->well_are_you()) {
+				echo __('open','open_for_business');
+			} else {
+				echo __('closed','open_for_business');
+			}
+			
+			if ($elaborate) {
+				echo ' ('.$this->please_elaborate().')';
+			}			
 		}
 	}
 }
